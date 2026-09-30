@@ -1,46 +1,29 @@
-//Create an angular app to display a Time Table using one way data binding
+
+//Write an Angular program to demonstrate string interpolation by displaying a dynamic message stored in a component class.
 
 //app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
- selector: 'app-root',
- standalone: true,
- imports: [RouterOutlet, CommonModule],
- templateUrl: './app.component.html',
- styleUrls: ['./app.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-subjects = ['ML', 'FSD', 'SF', 'ASD'];
+  title = 'Angular 20 Interpolation';
+  username = 'DevUser';
+  today = new Date();
 
- days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
- periods = ['9AM-10AM', '10AM-11AM', '11AM-12PM', '12PM-1PM'];
-
- timetable: string[][] = [
-   ['ML', 'FSD', 'SF', 'ASD'],
-   ['FSD', 'ASD', 'ML', 'SF'],
-   ['SF', 'ML', 'FSD', 'ASD'],
-   ['ASD', 'SF', 'FSD', 'ML'],
-   ['ML', 'SF', 'ASD', 'FSD'],
- ];
+  getGreeting(): string {
+    return `Welcome back, ${this.username}!`;
+  }
 }
 
 //app.component.html
-<h2 style="text-align: center;">Weekly Time Table</h2>
-
-<table border="1" cellpadding="10" style="margin: 0 auto; border-collapse: collapse;">
- <thead>
-   <tr>
-     <th>Day / Period</th>
-     <th *ngFor="let period of periods">{{ period }}</th>
-   </tr>
- </thead>
- <tbody>
-   <tr *ngFor="let day of days; let i = index">
-     <td>{{ day }}</td>
-     <td *ngFor="let subject of timetable[i]">{{ subject }}</td>
-   </tr>
- </tbody>
-</table>
+<div style="text-align:center; margin-top: 50px;">
+  <h1>{{ title }}</h1>
+  <p>Hello, {{ username }} 👋</p>
+  <p>Today is: {{ today | date:'fullDate' }}</p>
+  <p>{{ getGreeting() }}</p>
+  <p>2 + 3 = {{ 2 + 3 }}</p>
+</div>

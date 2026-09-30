@@ -1,65 +1,25 @@
-Q. Defining route parameters and retrieving data in components 
+// Create an Angular App to demonstrate the two way data binding.
 
-
-//app.routes.ts
-
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-
-export const routes: Routes = [
- { path: 'home', component: HomeComponent },            
- { path: 'user/:id', component: UserComponent }     
-];
-
-//app.component.ts
-
-
+//app.ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RouterModule} from '@angular/router';
+import {FormsModule}  from '@angular/forms'; 
+import { CommonModule } from '@angular/common';
+
 @Component({
- selector: 'app-root',
- standalone: true,
- imports: [RouterOutlet,RouterModule],
- templateUrl: './app.component.html',
- styleUrl: './app.component.css'
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, FormsModule, CommonModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
- title = 'angular-route-params-demo';
+  title = 'Twowaydatabinding';
+  name:string = '';
+  surname = 'pawar';
 }
 
 //app.component.html
-
-<h2>Angular Route Parameters Demo</h2>
-
-<nav>
- <a routerLink="/home">Home</a> |
- <a routerLink="/user/101">User 101</a> |
- <a routerLink="/user/202">User 202</a> |
- <a routerLink="/user/203">User 203</a>
-</nav>
-
-<hr />
-
-<router-outlet></router-outlet>
-
-//user.component.ts
-
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
-@Component({
- selector: 'app-user',
- standalone: true,
- imports: [CommonModule],
- templateUrl: './user.component.html',
- styleUrl: './user.component.css'
-})
-export class UserComponent {
-userId: string | null = null;
-
- constructor(private route: ActivatedRoute) {
-   this.userId = this.route.snapshot.paramMap.get('id');
-}
-}
+<h2>Two way Data Binding Example</h2>
+<input type="text" [(ngModel)]="name" placeholder="Enter Your Name" />
+<h3>Hello, {{name}} {{surname}}</h3>
