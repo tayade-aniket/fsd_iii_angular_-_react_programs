@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular 20 Interpolation';
-  username = 'DevUser';
+  username = 'Aniket';
   today = new Date();
 
   getGreeting(): string {

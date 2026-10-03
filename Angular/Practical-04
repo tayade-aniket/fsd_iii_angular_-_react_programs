@@ -14,15 +14,15 @@ import { CommonModule } from '@angular/common';
 export class StudentListComponent {
   studentNames: string[] = [
     'Aniket',
-    'Sneha',
+    'Shubhra',
     'Dhiraj',
-    'Pooja',
+    'Pranali',
     'Ravi',
     'Neha',
     'Suresh',
     'Mayur',
     'Anjali',
-    'Vijay'
+    'Vikrant'
   ];
 }
 
